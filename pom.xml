@@ -12,7 +12,7 @@
         <module>Base</module>
         <module>Design</module>
         <module>Collection</module>
-        <module>Mintor</module>
+        <module>Monitor</module>
         <module>Pusher</module>
     </modules>
 

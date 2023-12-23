@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.cn.yujiangjun.echovista</groupId>
-    <artifactId>Mintor</artifactId>
+    <artifactId>Monitor</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
