@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    kubernetes:
+      client:
+        namespace: default
+      reload:
+        enabled: true
+        mode: polling
+        period: 500
+      discovery:
+        all-namespaces: true
+        include-not-ready-addresses: true
+      config:
+        name: default-name
+        namespace: default
+        sources:
+          - name: k8s-sc
+  application:
+    name: k8s-sc

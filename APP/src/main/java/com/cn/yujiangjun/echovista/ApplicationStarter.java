@@ -1,5 +1,6 @@
 package com.cn.yujiangjun.echovista;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,10 +16,14 @@ import java.util.List;
 @EnableDiscoveryClient
 @RestController
 @RequestMapping("/")
+@Slf4j
 public class ApplicationStarter {
 
     @Autowired
     private DiscoveryClient discoveryClient;
+
+    @Autowired
+    private MyConfig myConfig;
 
     public static void main(String[] args) {
         SpringApplication.run(ApplicationStarter.class,args);
@@ -27,6 +32,14 @@ public class ApplicationStarter {
 
     @GetMapping("/getServices")
     public List<String> getServiceList(){
+        String description = discoveryClient.description();
+        log.info("description:{}",description);
         return discoveryClient.getServices();
+    }
+
+    @GetMapping("/getCm")
+    public String getCm(){
+        log.info("description:{}",myConfig.getMessage());
+        return myConfig.getMessage();
     }
 }
