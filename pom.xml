@@ -19,10 +19,9 @@
 
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.1</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <artifactId>spring-cloud-kubernetes</artifactId>
+        <groupId>org.springframework.cloud</groupId>
+        <version>3.1.0</version>
     </parent>
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -43,13 +42,12 @@
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-kubernetes-fabric8-all</artifactId>
+            <artifactId>spring-cloud-starter-kubernetes-discoveryclient</artifactId>
             <version>${spring.cloud.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-kubernetes-client-all</artifactId>
-            <version>${spring.cloud.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

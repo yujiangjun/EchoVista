@@ -1,0 +1,17 @@
+management:
+  server:
+    port: 8082
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 8082
+spring:
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
+        discovery-server-url: http://127.0.0.1:14567/
+  main:
+    cloud-platform: kubernetes
