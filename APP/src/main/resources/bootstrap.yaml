@@ -12,6 +12,5 @@ spring:
     kubernetes:
       discovery:
         enabled: true
-        discovery-server-url: http://127.0.0.1:14567/
   main:
     cloud-platform: kubernetes
