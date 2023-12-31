@@ -16,9 +16,11 @@ spring:
   cloud:
     kubernetes:
       discovery:
-        enabled: false
+        enabled: true
       config:
-        enabled: false
+        enabled: true
+        namespace: default
+        name: user-center
   main:
     cloud-platform: kubernetes
   application:
