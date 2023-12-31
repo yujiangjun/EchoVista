@@ -1,0 +1,25 @@
+management:
+  server:
+    port: 8083
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 8083
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: CZFhqPxkyB
+    url: jdbc:postgresql://127.0.0.1:25432/postgres
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: false
+      config:
+        enabled: false
+  main:
+    cloud-platform: kubernetes
+  application:
+    name: User
