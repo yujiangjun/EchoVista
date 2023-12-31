@@ -15,6 +15,7 @@
         <module>Monitor</module>
         <module>Pusher</module>
         <module>APP</module>
+        <module>User</module>
     </modules>
 
 
