@@ -1,14 +1,12 @@
 package com.cn.yujiangjun.echovista.base.utils;
 
-import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
-public class ContextUtil implements ApplicationContextAware {
+public class ContextUtil {
     private static ApplicationContext context;
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        context=applicationContext;
+
+    public static void setContext(ApplicationContext context) {
+        ContextUtil.context = context;
     }
 
     public static <T> T getBean(Class<T> clazz){

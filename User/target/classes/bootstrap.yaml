@@ -25,3 +25,14 @@ spring:
     cloud-platform: kubernetes
   application:
     name: User
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: MNj6KdKaqR
+    url: jdbc:postgresql://127.0.0.1:25432/postgres
