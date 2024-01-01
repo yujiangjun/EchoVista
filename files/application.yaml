@@ -1,0 +1,3 @@
+jwt:
+  secret: cn.com.yujiangjun.echoVista
+  expire: 10
