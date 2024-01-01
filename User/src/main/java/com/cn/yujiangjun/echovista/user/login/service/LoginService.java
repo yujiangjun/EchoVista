@@ -1,10 +1,9 @@
 package com.cn.yujiangjun.echovista.user.login.service;
 
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cn.yujiangjun.echovista.common.comfig.JwtConfig;
+import com.cn.yujiangjun.echovista.common.config.JwtConfig;
 import com.cn.yujiangjun.echovista.common.utils.JwtUtil;
 import com.cn.yujiangjun.echovista.user.exception.LoginException;
 import com.cn.yujiangjun.echovista.user.login.mapper.UserMapper;
