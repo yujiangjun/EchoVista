@@ -3,7 +3,9 @@ package com.cn.yujiangjun.echovista.common.utils;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.*;
+import com.auth0.jwt.exceptions.AlgorithmMismatchException;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.cn.yujiangjun.echovista.base.utils.ContextUtil;
 import com.cn.yujiangjun.echovista.common.config.JwtConfig;
@@ -17,14 +19,14 @@ public class JwtUtil {
     private JwtUtil() {
     }
 
-    public static String getToken(Map<String,String> map, Integer day){
+    public static String getToken(Map<String, Object> map, Integer day){
         String secret = ContextUtil.getBean(JwtConfig.class).getSecret();
         Calendar instance= Calendar.getInstance();
-        instance.add(Calendar.SECOND,day);
+        instance.add(Calendar.DAY_OF_YEAR,day);
         //创建jwt  builder
         JWTCreator.Builder builder= JWT.create();
+        builder.withClaim("user",map);
         //payload，这里采用lambda表达式设置
-        map.forEach(builder::withClaim);
         return builder.withExpiresAt(instance.getTime())//指定令牌过期时间
                 .sign(Algorithm.HMAC256(secret));
     }
