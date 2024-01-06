@@ -1,0 +1,1 @@
+insert into public."user"(user_id, password, user_name, email, full_name) values ('zhangsan','123456','张三','123@163.com','张三');
