@@ -3,11 +3,11 @@ create table public.config_dict
     id            integer      default nextval('config_dict_seq'::regclass) not null
         constraint config_dict_pk
             primary key,
-    type_code     integer                                                   not null,
+    type_code     varchar(20)                                               not null,
     type_name     varchar(200)                                              not null,
-    dict_code     integer                                                   not null,
+    dict_code     varchar(20)                                               not null,
     dict_name     varchar(200)                                              not null,
-    external_data varchar(1000)                                             ,
+    external_data varchar(1000),
     is_deleted    integer      default 0                                    not null,
     created_by    varchar(200) default 'sys'::character varying             not null,
     created_time  timestamp    default (now())::timestamp without time zone not null,

@@ -1,6 +1,6 @@
 create table public.cat_question
 (
-    id            integer      default nextval('cat_question'::regclass)    not null
+    id            integer      default nextval('cat_ques_seq'::regclass)    not null
         constraint cat_question_pk
             primary key,
     cat_code      integer,
@@ -10,7 +10,7 @@ create table public.cat_question
     ques_name_en  varchar(200),
     icon          varchar(1000),
     ques_order    integer,
-    ques_type     integer,
+    ques_type     varchar(200),
     is_deleted    integer      default 0                                    not null,
     created_by    varchar(200) default 'sys'::character varying             not null,
     created_time  timestamp    default (now())::timestamp without time zone not null,
@@ -36,7 +36,7 @@ comment on column public.cat_question.icon is '题型icon';
 
 comment on column public.cat_question.ques_order is '题型序号';
 
-comment on column public.cat_question.ques_type is '题型类型 1 input 2 select 3 multi select 4 upload';
+comment on column public.cat_question.ques_type is '题型输入类型  见字典表quesInputType';
 
 comment on column public.cat_question.survey_type is '问卷类型';
 
