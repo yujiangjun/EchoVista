@@ -1,6 +1,8 @@
 create table public.survey_config
 (
-    id                integer      default nextval('survey_config_seq'::regclass) not null,
+    id                integer      default nextval('survey_config_seq'::regclass) not null
+        constraint survey_config_pk
+            primary key,
     config_id         varchar(200)                                                not null,
     config_cat_desc   varchar(100)                                                not null,
     config_code       integer                                                     not null,
@@ -30,4 +32,7 @@ comment on column public.survey_config.config_order is '配置项序号';
 
 alter table public.survey_config
     owner to postgres;
+
+create unique index survey_config_config_id_uindex
+    on public.survey_config (config_id);
 
