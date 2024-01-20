@@ -12,6 +12,7 @@ import com.cn.yujiangjun.echovista.user.login.model.User;
 import com.cn.yujiangjun.echovista.user.login.vo.req.LoginReqVO;
 import com.cn.yujiangjun.echovista.user.login.vo.res.LoginResVO;
 import lombok.AllArgsConstructor;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -24,6 +25,7 @@ import static com.cn.yujiangjun.echovista.user.enums.ErrorEnums.LoginEnum.*;
 public class LoginService extends ServiceImpl<UserMapper, User> {
 
     private final JwtConfig jwtConfig;
+    private final RedisTemplate<String,Object> redisTemplate;
 
     public LoginResVO login(LoginReqVO req) {
         if (StrUtil.isBlankIfStr(req.userId()) || StrUtil.isBlankIfStr(req.password())) {
@@ -35,6 +37,7 @@ public class LoginService extends ServiceImpl<UserMapper, User> {
             throw new LoginException(LOGIN_PASSWORD_ERROR);
         }
         String token = JwtUtil.getToken(BeanUtil.beanToMap(one, false, true), jwtConfig.getExpire());
+        redisTemplate.opsForValue().set(token,one);
         return new LoginResVO(one.getUserId(), token);
     }
 
