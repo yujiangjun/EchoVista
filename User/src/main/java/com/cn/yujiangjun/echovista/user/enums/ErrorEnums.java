@@ -27,4 +27,25 @@ public class ErrorEnums {
             return value;
         }
     }
+
+
+    @AllArgsConstructor
+    public enum FolderEnum implements BaseEnum{
+        FOLDER_NOT_EXIST(FAIL_CODE,"当前目录不存在"),
+        PARENT_FOLDER_NOT_EXIST(FAIL_CODE,"目标目录不存在"),
+        ;
+
+
+        private final int code;
+        private final String value;
+        @Override
+        public int getCode() {
+            return code;
+        }
+
+        @Override
+        public String getValue() {
+            return value;
+        }
+    }
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.yujiangjun.echovista.user.folders.mapper.FolderMapper">
+  <resultMap id="BaseResultMap" type="com.cn.yujiangjun.echovista.user.folders.model.Folder">
+    <!--@mbg.generated-->
+    <!--@Table folder-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="folder_code" jdbcType="INTEGER" property="folderCode" />
+    <result column="folder_name" jdbcType="VARCHAR" property="folderName" />
+    <result column="folder_partent_code" jdbcType="BIGINT" property="folderPartentCode" />
+    <result column="folder_parent_name" jdbcType="VARCHAR" property="folderParentName" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="owner_id" jdbcType="VARCHAR" property="ownerId" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+    <result column="external_data" jdbcType="VARCHAR" property="externalData" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, folder_code, folder_name, folder_partent_code, folder_parent_name, icon, owner_id, 
+    created_by, created_time, updated_by, updated_time, is_deleted, external_data
+  </sql>
+
+  <resultMap id="folderTreeMap" type="com.cn.yujiangjun.echovista.user.folders.dto.FolderTreeDto">
+    <id column="id" property="id"/>
+    <result column="folder_code" property="folderCode"/>
+    <result column="folder_name" property="folderName"/>
+    <result column="folder_partent_code" property="folderPartentCode"/>
+    <result column="folder_parent_name" property="folderParentName"/>
+    <result column="icon" property="icon"/>
+    <result column="owner_id" property="ownerId"/>
+    <collection property="sons" ofType="com.cn.yujiangjun.echovista.user.folders.dto.FolderTreeDto"
+                column="folder_code"
+                select="selectSons"/>
+  </resultMap>
+  <select id="selectSons" resultMap="folderTreeMap">
+    select * from folder where folder_partent_code = #{folderCode} and is_deleted=0
+  </select>
+  <select id="getMyFolderTree" resultMap="folderTreeMap">
+    select * from folder where owner_id=#{req.ownerId}
+    and folder_partent_code='000'
+    and is_deleted=0 order by created_time desc
+  </select>
+</mapper>
