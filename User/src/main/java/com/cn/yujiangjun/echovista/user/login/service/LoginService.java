@@ -12,11 +12,13 @@ import com.cn.yujiangjun.echovista.user.login.model.User;
 import com.cn.yujiangjun.echovista.user.login.vo.req.LoginReqVO;
 import com.cn.yujiangjun.echovista.user.login.vo.res.LoginResVO;
 import lombok.AllArgsConstructor;
+import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 import static com.cn.yujiangjun.echovista.user.enums.ErrorEnums.LoginEnum.*;
 
@@ -32,13 +34,17 @@ public class LoginService extends ServiceImpl<UserMapper, User> {
             throw new LoginException(LOGIN_PARAM_LOSE);
         }
         User one = getOne(new LambdaQueryWrapper<User>().eq(User::getUserId, req.userId()));
-        String password = Optional.ofNullable(one).orElseThrow(() -> new LoginException(CURRENT_USER_NOT_EXIST)).getPassword();
+        Optional<User> optionalUser = Optional.ofNullable(one);
+        String password = optionalUser.orElseThrow(() -> new LoginException(CURRENT_USER_NOT_EXIST)).getPassword();
         if (!Objects.equals(password, req.password())) {
             throw new LoginException(LOGIN_PASSWORD_ERROR);
         }
         String token = JwtUtil.getToken(BeanUtil.beanToMap(one, false, true), jwtConfig.getExpire());
-        redisTemplate.opsForValue().set(token,one);
-        return new LoginResVO(one.getUserId(), token);
+        BoundHashOperations<String, Object, Object> hashOps = redisTemplate.boundHashOps(token);
+        /* todo 这里不是原子性，考虑使用lua脚本 */
+        hashOps.expire(7,TimeUnit.DAYS);
+        hashOps.putAll(BeanUtil.beanToMap(one,true,false));
+        return new LoginResVO(optionalUser.get().getUserId(), token);
     }
 
     public void logout() {
