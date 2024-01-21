@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.yujiangjun.echovista.design.survey.mapper.CatQuestionMapper">
+  <resultMap id="BaseResultMap" type="com.cn.yujiangjun.echovista.design.survey.model.CatQuestion">
+    <!--@mbg.generated-->
+    <!--@Table cat_question-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cat_code" jdbcType="INTEGER" property="catCode" />
+    <result column="cat_name" jdbcType="VARCHAR" property="catName" />
+    <result column="ques_code" jdbcType="INTEGER" property="quesCode" />
+    <result column="ques_name" jdbcType="VARCHAR" property="quesName" />
+    <result column="ques_name_en" jdbcType="VARCHAR" property="quesNameEn" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="ques_order" jdbcType="INTEGER" property="quesOrder" />
+    <result column="ques_type" jdbcType="VARCHAR" property="quesType" />
+    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+    <result column="survey_type" jdbcType="VARCHAR" property="surveyType" />
+    <result column="external_data" jdbcType="VARCHAR" property="externalData" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, cat_code, cat_name, ques_code, ques_name, ques_name_en, icon, ques_order, ques_type, 
+    is_deleted, created_by, created_time, updated_by, updated_time, survey_type, external_data
+  </sql>
+
+
+<!--  <resultMap id="catListMap" type="com.cn.yujiangjun.echovista.design.survey.vo.CatVo">-->
+<!--    <id column="id" property="id"/>-->
+<!--    <result column="cat_code" property="catCode"/>-->
+<!--    <result column="cat_name" property="catName"/>-->
+<!--    <result column="icon" property="icon"/>-->
+<!--    <result column="ques_order" property="quesOrder"/>-->
+<!--    <collection-->
+<!--            column="cat_code"-->
+<!--            property="questions"-->
+<!--            ofType="com.cn.yujiangjun.echovista.design.survey.vo.QuesVo"-->
+<!--            select="getQustionsByCatCode"-->
+<!--    />-->
+<!--  </resultMap>-->
+
+<!--  <select id="getQustionsByCatCode">-->
+<!--    select * from cat_question where is_deleted=0 and cat_code=#{catCode} and  ques_code is not null-->
+<!--    order by ques_order-->
+<!--  </select>-->
+
+  <select id="getAllQuestions" resultType="com.cn.yujiangjun.echovista.design.survey.model.CatQuestion">
+    select * from cat_question where is_deleted=0 order by ques_order
+  </select>
+</mapper>
