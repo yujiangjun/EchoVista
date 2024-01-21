@@ -18,9 +18,10 @@ public class ModelCommonFieldFillHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         LoginUserDTO currentUser = SessionUtil.getValue();
         LoginUserDTO user = Optional.ofNullable(currentUser).orElseGet(() -> new LoginUserDTO("", "sys", ""));
-        this.strictInsertFill(metaObject,"createdBy",String.class, user.userId());
+        log.info("insert 填充字段,user:{}",user);
+        this.strictInsertFill(metaObject,"createdBy",String.class, user.getUserId());
         this.strictInsertFill(metaObject,"createdTime", Date.class, DateTime.now());
-        this.strictInsertFill(metaObject,"updatedBy",String.class, user.userId());
+        this.strictInsertFill(metaObject,"updatedBy",String.class, user.getUserId());
         this.strictInsertFill(metaObject,"updatedTime", Date.class, DateTime.now());
     }
 
@@ -28,7 +29,8 @@ public class ModelCommonFieldFillHandler implements MetaObjectHandler {
     public void updateFill(MetaObject metaObject) {
         LoginUserDTO currentUser = SessionUtil.getValue();
         LoginUserDTO user = Optional.ofNullable(currentUser).orElseGet(() -> new LoginUserDTO("", "sys", ""));
-        this.strictInsertFill(metaObject,"updatedBy",String.class, user.userId());
+        log.info("update 填充字段,user:{}",user);
+        this.strictInsertFill(metaObject,"updatedBy",String.class, user.getUserId());
         this.strictInsertFill(metaObject,"updatedTime", Date.class, DateTime.now());
     }
 }

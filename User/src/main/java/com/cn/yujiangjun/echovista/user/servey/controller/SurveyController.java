@@ -3,6 +3,7 @@ package com.cn.yujiangjun.echovista.user.servey.controller;
 import com.cn.yujiangjun.echovista.base.enums.DelFlagEnum;
 import com.cn.yujiangjun.echovista.base.web.vo.Resp;
 import com.cn.yujiangjun.echovista.common.constants.CommonError;
+import com.cn.yujiangjun.echovista.common.constants.SurveyStatusEnum;
 import com.cn.yujiangjun.echovista.common.exception.SurveyException;
 import com.cn.yujiangjun.echovista.user.servey.model.UserSurvey;
 import com.cn.yujiangjun.echovista.user.servey.service.UserSurveyServiceImpl;
@@ -34,6 +35,8 @@ public class SurveyController {
 
     @PostMapping("/createSurvey")
     public Resp<UserSurvey> createSurvey(@RequestBody UserSurvey userSurvey){
+        userSurvey.setStatus(SurveyStatusEnum.INIT.getCode());
+        userSurvey.setIsDeleted(DelFlagEnum.NO.getCode());
         userSurveyService.save(userSurvey);
         return success(userSurvey);
     }
@@ -47,6 +50,10 @@ public class SurveyController {
         if (Objects.equals(survey.getIsDeleted(), DelFlagEnum.YES.getCode())){
             throw new SurveyException(CommonError.DEL_FLAG_YES_FORBIDDEN_OPERATION);
         }
+        if (Objects.equals(survey.getStatus(),SurveyStatusEnum.INIT.getCode())
+        || Objects.equals(survey.getStatus(),SurveyStatusEnum.DRAFT.getCode())){
+            throw new SurveyException(CommonError.SURVEY_CUR_STATUS_FORBIDDEN_EDIT);
+        }
         userSurveyService.updateById(userSurvey);
         return success(userSurvey);
     }
@@ -57,6 +64,10 @@ public class SurveyController {
             throw new SurveyException(CommonError.PARAMS_NOT_EXISTS);
         }
         UserSurvey survey = userSurveyService.getById(userSurvey.getId());
+        if (Objects.equals(survey.getStatus(),SurveyStatusEnum.PUBLISH.getCode())){
+            throw new SurveyException(CommonError.SURVEY_CUR_STATUS_FORBIDDEN_EDIT);
+        }
+
         if (Objects.equals(survey.getIsDeleted(), DelFlagEnum.YES.getCode())){
             return  success(null);
         }

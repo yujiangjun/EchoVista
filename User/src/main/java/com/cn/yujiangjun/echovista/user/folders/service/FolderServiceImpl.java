@@ -1,7 +1,6 @@
 package com.cn.yujiangjun.echovista.user.folders.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cn.yujiangjun.echovista.base.enums.DelFlagEnum;
 import com.cn.yujiangjun.echovista.user.enums.ErrorEnums;
@@ -28,6 +27,7 @@ public class FolderServiceImpl extends ServiceImpl<FolderMapper, Folder> {
 
 
     public Folder addFolder(Folder folder) {
+        folder.setIsDeleted(DelFlagEnum.NO.getCode());
         save(folder);
         return folder;
     }
