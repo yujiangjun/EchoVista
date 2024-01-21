@@ -4,12 +4,15 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @TableName(value = "user",schema = "public")
 public class User implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -1869266222333380878L;
     /**
     * 主键
     */
@@ -50,6 +53,5 @@ public class User implements Serializable {
 
     private Date updatedTime;
 
-    private static final long serialVersionUID = 1L;
 
 }

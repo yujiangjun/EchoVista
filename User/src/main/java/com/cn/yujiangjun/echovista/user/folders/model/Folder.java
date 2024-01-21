@@ -12,6 +12,8 @@ import java.util.Date;
 @Data
 public class Folder implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = -8697744205555046289L;
     private Integer id;
 
     /**
@@ -55,7 +57,4 @@ public class Folder implements Serializable {
     private Integer isDeleted;
 
     private String externalData;
-
-    @Serial
-    private static final long serialVersionUID = 1L;
 }
