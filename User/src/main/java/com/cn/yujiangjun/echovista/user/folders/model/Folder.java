@@ -1,16 +1,18 @@
 package com.cn.yujiangjun.echovista.user.folders.model;
 
+import com.cn.yujiangjun.echovista.common.model.BaseModel;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * 个人目录
  */
 @Data
-public class Folder implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class Folder extends BaseModel implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -8697744205555046289L;
@@ -46,13 +48,6 @@ public class Folder implements Serializable {
     */
     private String ownerId;
 
-    private String createdBy;
-
-    private Date createdTime;
-
-    private String updatedBy;
-
-    private Date updatedTime;
 
     private Integer isDeleted;
 

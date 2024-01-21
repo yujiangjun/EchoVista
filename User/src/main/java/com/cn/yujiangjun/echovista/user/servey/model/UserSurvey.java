@@ -1,15 +1,18 @@
 package com.cn.yujiangjun.echovista.user.servey.model;
 
+import com.cn.yujiangjun.echovista.common.model.BaseModel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
-import lombok.Data;
 
 /**
  * 用户调查表
  */
 @Data
-public class UserSurvey implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class UserSurvey extends BaseModel implements Serializable {
     @Serial
     private static final long serialVersionUID = -6087177636841960012L;
     private Integer id;
@@ -37,14 +40,6 @@ public class UserSurvey implements Serializable {
     private String folderId;
 
     private Integer isDeleted;
-
-    private String createdBy;
-
-    private Date createdTime;
-
-    private String updatedBy;
-
-    private Date updatedTime;
 
     /**
     * 问卷状态 0 初始化 1 草稿 2 已发布 3 停止收集
