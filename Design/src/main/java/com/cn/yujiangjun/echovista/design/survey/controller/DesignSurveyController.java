@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Objects;
 
 import static com.cn.yujiangjun.echovista.base.web.vo.RespVO.success;
+import static java.lang.StringTemplate.STR;
 
 @RestController
 @RequestMapping("/design/survey")
@@ -37,7 +38,7 @@ public class DesignSurveyController {
     @PostMapping("/addQues")
     public Resp<SurveyQues> addQues(@RequestBody SurveyQues surveyQues) {
         surveyQues.setQuesId(UUID.randomUUID().toString());
-        surveyQues.setQuesCode(surveyQues.getSurveyId() + "_" + surveyQues.getQuesOrder());
+        surveyQues.setQuesCode(STR."\{surveyQues.getSurveyId()}_\{surveyQues.getQuesOrder()}");
         surveyQues.setIsDeleted(DelFlagEnum.NO.getCode());
         surveyQuesService.save(surveyQues);
         return success(surveyQues);
