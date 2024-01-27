@@ -11,10 +11,14 @@ import static com.cn.yujiangjun.echovista.base.constants.CommonConstants.FAIL_CO
 public enum CommonError implements BaseEnum {
 
 
-    PARAMS_NOT_EXISTS(FAIL_CODE,"参数不存在"),
-    DEL_FLAG_YES_FORBIDDEN_OPERATION(FAIL_CODE,"当前已被删除，禁止操作"),
-    SURVEY_CUR_STATUS_FORBIDDEN_EDIT(FAIL_CODE,"当前问卷状态禁止编辑"),
-    SURVEY_CUR_STATUS_FORBIDDEN_DEL(FAIL_CODE,"当前问卷状态禁止删除"),
+    PARAMS_NOT_EXISTS(FAIL_CODE, "参数不存在"),
+    DEL_FLAG_YES_FORBIDDEN_OPERATION(FAIL_CODE, "当前已被删除，禁止操作"),
+    SURVEY_CUR_STATUS_FORBIDDEN_EDIT(FAIL_CODE, "当前问卷状态禁止编辑"),
+    SURVEY_CUR_STATUS_FORBIDDEN_DEL(FAIL_CODE, "当前问卷状态禁止删除"),
+    CURRENT_QUESTION_NOT_EXISTS(FAIL_CODE, "当前问题不存在"),
+    CURRENT_QUESTION_DELETED(FAIL_CODE, "当前问题已删除"),
+    CURRENT_QUESTION_CONTENT_NOT_EXISTS(FAIL_CODE, "当前问题条目不存在"),
+    CURRENT_QUESTION_CONTENT_DELETED(FAIL_CODE, "当前问题条目已删除"),
     ;
 
     private final int code;

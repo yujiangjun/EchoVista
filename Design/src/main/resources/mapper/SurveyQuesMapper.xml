@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.yujiangjun.echovista.design.survey.mapper.SurveyQuesMapper">
+    <resultMap id="BaseResultMap" type="com.cn.yujiangjun.echovista.design.survey.model.SurveyQues">
+        <!--@mbg.generated-->
+        <!--@Table survey_ques-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="ques_id" jdbcType="VARCHAR" property="quesId"/>
+        <result column="ques_code" jdbcType="VARCHAR" property="quesCode"/>
+        <result column="ques_title" jdbcType="VARCHAR" property="quesTitle"/>
+        <result column="survey_id" jdbcType="VARCHAR" property="surveyId"/>
+        <result column="ques_order" jdbcType="INTEGER" property="quesOrder"/>
+        <result column="external_data" jdbcType="VARCHAR" property="externalData"/>
+        <result column="is_deleted" jdbcType="INTEGER" property="isDeleted"/>
+        <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="created_time" jdbcType="TIMESTAMP" property="createdTime"/>
+        <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime"/>
+        <result column="is_must_oper" jdbcType="SMALLINT" property="isMustOper"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id,
+        ques_id,
+        ques_code,
+        ques_title,
+        survey_id,
+        ques_order,
+        external_data,
+        is_deleted,
+        created_by,
+        created_time,
+        updated_by,
+        updated_time,
+        is_must_oper
+    </sql>
+
+    <resultMap id="questFullInfoMap" extends="BaseResultMap"
+               type="com.cn.yujiangjun.echovista.design.survey.vo.GetAllQuesFullInfoRespVo">
+        <collection property="quesContentList" ofType="com.cn.yujiangjun.echovista.design.survey.model.QuesContent"
+                    column="ques_id" select="getAllContentByQues"/>
+    </resultMap>
+
+    <select id="getCurrentSurveyALlQues" resultMap="BaseResultMap">
+        select *
+        from survey_ques
+        where survey_id = #{surveyQues.surveyId}
+          and is_deleted = #{surveyQues.isDeleted}
+    </select>
+
+    <select id="getAllContentByQues" resultType="com.cn.yujiangjun.echovista.design.survey.model.QuesContent">
+        select *
+        from ques_content
+        where ques_id = #{quesId}
+          and is_deleted = 0
+    </select>
+</mapper>
