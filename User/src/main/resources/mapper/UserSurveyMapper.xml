@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cn.yujiangjun.echovista.user.servey.service.UserSurveyMapper">
+<mapper namespace="com.cn.yujiangjun.echovista.user.servey.mapper.UserSurveyMapper">
   <resultMap id="BaseResultMap" type="com.cn.yujiangjun.echovista.common.model.UserSurvey">
     <!--@mbg.generated-->
     <!--@Table user_survey-->
