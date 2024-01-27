@@ -1,0 +1,32 @@
+management:
+  server:
+    port: 8085
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 8085
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 123456
+    url: jdbc:postgresql://127.0.0.1:5432/postgres
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
+      config:
+        enabled: true
+        namespace: default
+        name: collection-center
+  main:
+    cloud-platform: kubernetes
+  application:
+    name: collection-center
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: 123456

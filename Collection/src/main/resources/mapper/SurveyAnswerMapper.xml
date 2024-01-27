@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.yujiangjun.echovista.collection.statistics.survey.mapper.SurveyAnswerMapper">
+  <resultMap id="BaseResultMap" type="com.cn.yujiangjun.echovista.collection.statistics.survey.model.SurveyAnswer">
+    <!--@mbg.generated-->
+    <!--@Table survey_answer-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="answer_date" jdbcType="TIMESTAMP" property="answerDate" />
+    <result column="survey_id" jdbcType="VARCHAR" property="surveyId" />
+    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, ip, "location", answer_date, survey_id, is_deleted, created_by, created_time, 
+    updated_by, updated_time
+  </sql>
+</mapper>

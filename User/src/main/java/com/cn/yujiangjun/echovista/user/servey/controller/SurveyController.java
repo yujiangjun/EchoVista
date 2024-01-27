@@ -5,7 +5,7 @@ import com.cn.yujiangjun.echovista.base.web.vo.Resp;
 import com.cn.yujiangjun.echovista.common.constants.CommonError;
 import com.cn.yujiangjun.echovista.common.constants.SurveyStatusEnum;
 import com.cn.yujiangjun.echovista.common.exception.SurveyException;
-import com.cn.yujiangjun.echovista.user.servey.model.UserSurvey;
+import com.cn.yujiangjun.echovista.common.model.UserSurvey;
 import com.cn.yujiangjun.echovista.user.servey.service.UserSurveyServiceImpl;
 import com.cn.yujiangjun.echovista.user.servey.vo.GetMySurveyReqVO;
 import lombok.AllArgsConstructor;

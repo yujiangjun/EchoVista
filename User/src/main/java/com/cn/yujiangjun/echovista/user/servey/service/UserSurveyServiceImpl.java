@@ -7,7 +7,7 @@ import com.cn.yujiangjun.echovista.base.enums.DelFlagEnum;
 import com.cn.yujiangjun.echovista.common.constants.CommonError;
 import com.cn.yujiangjun.echovista.common.exception.SurveyException;
 import com.cn.yujiangjun.echovista.user.servey.mapper.UserSurveyMapper;
-import com.cn.yujiangjun.echovista.user.servey.model.UserSurvey;
+import com.cn.yujiangjun.echovista.common.model.UserSurvey;
 import com.cn.yujiangjun.echovista.user.servey.vo.GetMySurveyReqVO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

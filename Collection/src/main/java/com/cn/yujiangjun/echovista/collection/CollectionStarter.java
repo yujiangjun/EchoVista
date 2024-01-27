@@ -1,4 +1,4 @@
-package com.cn.yujiangjun.echovista;
+package com.cn.yujiangjun.echovista.collection;
 
 import com.cn.yujiangjun.echovista.base.utils.ContextUtil;
 import org.springframework.boot.SpringApplication;
