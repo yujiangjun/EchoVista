@@ -18,6 +18,12 @@ public class SurveyAnswerController {
 
     private final SurveyAnswerServiceImpl surveyAnswerService;
 
+    /**
+     * 添加问卷答案
+     * @param surveyAnswer 问卷答案
+     * @return 主键id
+     *
+     */
     @PostMapping("/addSurveyAnswer")
     public Resp<SurveyAnswer> addSurveyAnswer(@RequestBody SurveyAnswer surveyAnswer) {
         return success(surveyAnswerService.addSurveyAnswer(surveyAnswer));
