@@ -1,6 +1,6 @@
-package com.cn.yujiangjun.echovista;
+package com.cn.yujiangjun.echovista.monitor;
 
-public class Main {
+public class MonitorStarter {
     public static void main(String[] args) {
         System.out.println("Hello world!");
     }

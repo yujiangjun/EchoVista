@@ -1,4 +1,4 @@
-package com.cn.yujiangjun.echovista;
+package com.cn.yujiangjun.echovista.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,8 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ApplicationStarter {
+public class AppStarter {
     public static void main(String[] args) {
-        SpringApplication.run(ApplicationStarter.class,args);
+        SpringApplication.run(AppStarter.class,args);
     }
 }

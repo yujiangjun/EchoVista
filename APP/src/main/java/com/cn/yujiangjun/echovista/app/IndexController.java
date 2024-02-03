@@ -1,4 +1,4 @@
-package com.cn.yujiangjun.echovista;
+package com.cn.yujiangjun.echovista.app;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

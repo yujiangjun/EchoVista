@@ -1,6 +1,6 @@
-package com.cn.yujiangjun.echovista;
+package com.cn.yujiangjun.echovista.pusher;
 
-public class Main {
+public class PusherStarter {
     public static void main(String[] args) {
         System.out.println("Hello world!");
     }

@@ -1,4 +1,4 @@
-package com.cn.yujiangjun.echovista;
+package com.cn.yujiangjun.echovista.app;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
