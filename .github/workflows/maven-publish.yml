@@ -26,12 +26,14 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
-      run: mvn -B package -DskipTests=true --file pom.xml
-    - name: Upload jar
-      uses: actions/upload-artifact@v4
-      with:
-        name: user-center
-        path: User/target/User-1.0-SNAPSHOT.jar
+      run: mvn -B package -DskipTests=true --file pom.xml 
+    - name: echo path
+      run: ls
+    # - name: Upload jar
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: user-center
+    #     path: User/target/User-1.0-SNAPSHOT.jar
 #    - name: Log in to the Container registry
 #      uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
 #      with:
