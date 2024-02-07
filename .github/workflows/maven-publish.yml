@@ -29,6 +29,12 @@ jobs:
       run: mvn -B package -DskipTests=true --file pom.xml 
     - name: echo path
       run: cd User&& ls&&pwd
+    - name: Build and push Docker image
+      uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+      with:
+        context: "{{defaultContext}}:User"
+        push: false
+        tags: user-center:1.0
     # - name: Upload jar
     #   uses: actions/upload-artifact@v4
     #   with:
