@@ -28,7 +28,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package -DskipTests=true --file pom.xml 
     - name: echo path
-      run: ls
+      run: cd User&& ls&&pwd
     # - name: Upload jar
     #   uses: actions/upload-artifact@v4
     #   with:
