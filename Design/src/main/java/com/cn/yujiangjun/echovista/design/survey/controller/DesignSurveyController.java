@@ -23,7 +23,7 @@ import static com.cn.yujiangjun.echovista.base.web.vo.RespVO.success;
 import static java.lang.StringTemplate.STR;
 
 @RestController
-@RequestMapping("/design/survey")
+@RequestMapping("/inner/design/survey")
 @AllArgsConstructor
 public class DesignSurveyController {
 

@@ -10,6 +10,6 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new CommonInterceptor(new CommonWebReqInterceptor()))
-                .excludePathPatterns("/user/login/");
+                .excludePathPatterns("/user/login/","/survey/**");
     }
 }

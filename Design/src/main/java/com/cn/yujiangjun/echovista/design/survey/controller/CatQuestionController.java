@@ -13,7 +13,7 @@ import java.util.List;
 import static com.cn.yujiangjun.echovista.base.web.vo.RespVO.success;
 
 @RestController
-@RequestMapping("/cat/ques")
+@RequestMapping("/inner/cat/ques")
 @AllArgsConstructor
 public class CatQuestionController {
 

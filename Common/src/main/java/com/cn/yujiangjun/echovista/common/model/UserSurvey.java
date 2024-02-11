@@ -45,4 +45,13 @@ public class UserSurvey extends BaseModel implements Serializable {
     */
     private Integer status;
 
+    /**
+     * pc端URL
+     */
+    private String surveyUrl;
+
+    /**
+     * 手机端URL
+     */
+    private String surveyMobileUrl;
 }

@@ -25,7 +25,7 @@ import static com.cn.yujiangjun.echovista.base.web.vo.RespVO.success;
  * 问题条目
  */
 @RestController
-@RequestMapping("/survey/ques/content")
+@RequestMapping("/inner/survey/ques/content")
 @AllArgsConstructor
 public class SurveyQuesContentController {
 

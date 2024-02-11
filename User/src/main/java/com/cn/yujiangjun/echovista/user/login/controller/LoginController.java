@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import static com.cn.yujiangjun.echovista.base.web.vo.RespVO.success;
 
 @RestController
-@RequestMapping("/user/login")
+@RequestMapping("/inner/user/login")
 @AllArgsConstructor
 @Slf4j
 public class LoginController {

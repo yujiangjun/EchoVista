@@ -1,14 +1,16 @@
 package com.cn.yujiangjun.echovista.user.servey.controller;
 
+import com.cn.yujiangjun.echovista.base.constants.CommonConstants;
 import com.cn.yujiangjun.echovista.base.enums.DelFlagEnum;
 import com.cn.yujiangjun.echovista.base.web.vo.Resp;
+import com.cn.yujiangjun.echovista.base.web.vo.RespVO;
 import com.cn.yujiangjun.echovista.common.constants.CommonError;
 import com.cn.yujiangjun.echovista.common.constants.SurveyStatusEnum;
 import com.cn.yujiangjun.echovista.common.exception.SurveyException;
 import com.cn.yujiangjun.echovista.common.model.UserSurvey;
 import com.cn.yujiangjun.echovista.user.servey.service.UserSurveyServiceImpl;
 import com.cn.yujiangjun.echovista.user.servey.vo.GetMySurveyReqVO;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +22,17 @@ import java.util.Objects;
 import static com.cn.yujiangjun.echovista.base.web.vo.RespVO.success;
 
 @RestController
-@RequestMapping("/survey")
-@AllArgsConstructor
+@RequestMapping("/inner/survey")
 public class SurveyController {
 
     private final UserSurveyServiceImpl userSurveyService;
 
+    @Value("${survey.url.host}")
+    private String surveyUrlHost;
+
+    public SurveyController(UserSurveyServiceImpl userSurveyService) {
+        this.userSurveyService = userSurveyService;
+    }
 
 
     @PostMapping("/getMySurveys")
@@ -74,5 +81,26 @@ public class SurveyController {
         survey.setIsDeleted(DelFlagEnum.YES.getCode());
         userSurveyService.updateById(survey);
         return success(null);
+    }
+
+    @PostMapping("/createUrl")
+    public Resp<UserSurvey> createUrl(@RequestBody UserSurvey userSurvey){
+        if (Objects.isNull(userSurvey.getId())) {
+            throw new SurveyException(CommonError.PARAMS_NOT_EXISTS);
+        }
+        UserSurvey survey = userSurveyService.getById(userSurvey.getId());
+        if (Objects.equals(survey.getStatus(), SurveyStatusEnum.PUBLISH.getCode())) {
+            throw new SurveyException(CommonError.SURVEY_CUR_STATUS_FORBIDDEN_EDIT);
+        }
+
+        if (Objects.equals(survey.getIsDeleted(), DelFlagEnum.YES.getCode())) {
+            return success(null);
+        }
+        String fullUrl = String.format(CommonConstants.DEFAULT_URL, surveyUrlHost, userSurvey.getUserSurveyId());
+        String fullMobileUrl = String.format(CommonConstants.DEFAULT_MOBILE_URL, surveyUrlHost, userSurvey.getUserSurveyId());
+        userSurvey.setSurveyUrl(fullUrl);
+        userSurvey.setSurveyMobileUrl(fullMobileUrl);
+        userSurveyService.updateById(userSurvey);
+        return RespVO.success(userSurvey);
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
 import static com.cn.yujiangjun.echovista.base.web.vo.RespVO.success;
 
 @RestController
-@RequestMapping("/folder")
+@RequestMapping("/inner/folder")
 @AllArgsConstructor
 public class FolderController {
 
