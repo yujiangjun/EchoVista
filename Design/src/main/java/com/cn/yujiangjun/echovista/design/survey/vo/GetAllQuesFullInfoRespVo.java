@@ -1,6 +1,6 @@
 package com.cn.yujiangjun.echovista.design.survey.vo;
 
-import com.cn.yujiangjun.echovista.design.survey.model.QuesContent;
+import com.cn.yujiangjun.echovista.common.model.QuesContent;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

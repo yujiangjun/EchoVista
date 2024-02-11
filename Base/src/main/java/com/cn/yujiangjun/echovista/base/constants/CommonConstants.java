@@ -10,6 +10,6 @@ public class CommonConstants {
     public  static final String FAIL_MES="fail";
 
     public static final String DEFAULT_URL="%s/survey/%s";
-    public static final String DEFAULT_MOBILE_URL="%s/survey/mobile/%s";
+    public static final String DEFAULT_MOBILE_URL="%s/survey/survey/%s";
 
 }

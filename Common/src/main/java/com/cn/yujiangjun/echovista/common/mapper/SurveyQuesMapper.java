@@ -1,9 +1,9 @@
-package com.cn.yujiangjun.echovista.design.survey.mapper;
+package com.cn.yujiangjun.echovista.common.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cn.yujiangjun.echovista.design.survey.model.SurveyQues;
+import com.cn.yujiangjun.echovista.common.model.SurveyQues;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

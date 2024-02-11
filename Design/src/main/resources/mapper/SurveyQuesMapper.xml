@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cn.yujiangjun.echovista.design.survey.mapper.SurveyQuesMapper">
-    <resultMap id="BaseResultMap" type="com.cn.yujiangjun.echovista.design.survey.model.SurveyQues">
+<mapper namespace="com.cn.yujiangjun.echovista.common.mapper.SurveyQuesMapper">
+    <resultMap id="BaseResultMap" type="com.cn.yujiangjun.echovista.common.model.SurveyQues">
         <!--@mbg.generated-->
         <!--@Table survey_ques-->
         <id column="id" jdbcType="INTEGER" property="id"/>
@@ -37,7 +37,7 @@
 
     <resultMap id="questFullInfoMap" extends="BaseResultMap"
                type="com.cn.yujiangjun.echovista.design.survey.vo.GetAllQuesFullInfoRespVo">
-        <collection property="quesContentList" ofType="com.cn.yujiangjun.echovista.design.survey.model.QuesContent"
+        <collection property="quesContentList" ofType="com.cn.yujiangjun.echovista.common.model.QuesContent"
                     column="ques_id" select="getAllContentByQues"/>
     </resultMap>
 
@@ -48,7 +48,7 @@
           and is_deleted = #{surveyQues.isDeleted}
     </select>
 
-    <select id="getAllContentByQues" resultType="com.cn.yujiangjun.echovista.design.survey.model.QuesContent">
+    <select id="getAllContentByQues" resultType="com.cn.yujiangjun.echovista.common.model.QuesContent">
         select *
         from ques_content
         where ques_id = #{quesId}

@@ -5,8 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cn.yujiangjun.echovista.common.constants.CommonError;
 import com.cn.yujiangjun.echovista.common.exception.SurveyException;
-import com.cn.yujiangjun.echovista.design.survey.mapper.SurveyQuesMapper;
-import com.cn.yujiangjun.echovista.design.survey.model.SurveyQues;
+import com.cn.yujiangjun.echovista.common.mapper.SurveyQuesMapper;
+import com.cn.yujiangjun.echovista.common.model.SurveyQues;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

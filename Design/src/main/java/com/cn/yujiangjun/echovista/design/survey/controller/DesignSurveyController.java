@@ -8,7 +8,7 @@ import com.cn.yujiangjun.echovista.base.web.vo.PageReqVo;
 import com.cn.yujiangjun.echovista.base.web.vo.Resp;
 import com.cn.yujiangjun.echovista.common.constants.CommonError;
 import com.cn.yujiangjun.echovista.common.exception.SurveyException;
-import com.cn.yujiangjun.echovista.design.survey.model.SurveyQues;
+import com.cn.yujiangjun.echovista.common.model.SurveyQues;
 import com.cn.yujiangjun.echovista.design.survey.service.SurveyQuesServiceImpl;
 import com.cn.yujiangjun.echovista.design.survey.vo.GetAllContentByQuesReqVo;
 import lombok.AllArgsConstructor;

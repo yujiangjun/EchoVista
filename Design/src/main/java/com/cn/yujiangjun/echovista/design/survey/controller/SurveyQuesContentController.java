@@ -7,7 +7,7 @@ import com.cn.yujiangjun.echovista.base.enums.DelFlagEnum;
 import com.cn.yujiangjun.echovista.base.web.vo.Resp;
 import com.cn.yujiangjun.echovista.common.constants.CommonError;
 import com.cn.yujiangjun.echovista.common.exception.SurveyException;
-import com.cn.yujiangjun.echovista.design.survey.model.QuesContent;
+import com.cn.yujiangjun.echovista.common.model.QuesContent;
 import com.cn.yujiangjun.echovista.design.survey.service.QuesContentServiceImpl;
 import com.cn.yujiangjun.echovista.design.survey.vo.GetAllContentByQuesReqVo;
 import lombok.AllArgsConstructor;
