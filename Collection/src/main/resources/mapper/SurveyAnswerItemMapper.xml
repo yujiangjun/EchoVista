@@ -31,7 +31,7 @@
     </sql>
 
     <select id="getRawDataTableHeader"
-            resultType="com.cn.yujiangjun.echovista.collection.statistics.survey.vo.OriginDataTableQuesHeadVo">
+            resultType="com.cn.yujiangjun.echovista.collection.statistics.survey.vo.RawDataTableQuesHeadVo">
         select ques_id, ques_title
         from survey_ques
         where is_deleted = 0

@@ -6,7 +6,7 @@ import java.io.Serial;
 import java.io.Serializable;
 
 @Data
-public class OriginDataTableQuesHeadVo implements Serializable {
+public class RawDataTableQuesHeadVo implements Serializable {
     @Serial
     private static final long serialVersionUID = 3978975648794427261L;
     /**

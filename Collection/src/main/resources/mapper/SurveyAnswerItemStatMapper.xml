@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.yujiangjun.echovista.collection.statistics.survey.mapper.SurveyAnswerItemStatMapper">
+  <resultMap id="BaseResultMap" type="com.cn.yujiangjun.echovista.collection.statistics.survey.model.SurveyAnswerItemStat">
+    <!--@mbg.generated-->
+    <!--@Table survey_answer_item_stat-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="answer_stat_id" jdbcType="INTEGER" property="answerStatId" />
+    <result column="survey_answer_item_id" jdbcType="INTEGER" property="surveyAnswerItemId" />
+    <result column="item_count" jdbcType="INTEGER" property="itemCount" />
+    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, answer_stat_id, survey_answer_item_id, item_count, is_deleted, created_by, created_time, 
+    updated_by, updated_time
+  </sql>
+
+  <select id="getAllQuesItemStatInAnswerSheet"
+            resultType="com.cn.yujiangjun.echovista.collection.statistics.survey.vo.AnswerSheetQuesItemStatRespVo">
+    select t1.content_id         as quesContentId,
+           t1.content_item_label as quesContentLabel,
+           t1.content_item_value as quesContentValue,
+           t1.content_order      as quesContentOrder,
+           t3.item_count         as answerCount
+    from ques_content t1
+           left join survey_answer_item t2 on t1.content_id = t2.ques_content_id
+           left join survey_answer_item_stat t3 on t1.content_id = t3.ques_content_id
+    where t1.is_deleted = 0
+      and t2.is_deleted = 0
+      and t3.is_deleted = 0
+      and t1.ques_id = #{quesId}
+    </select>
+</mapper>

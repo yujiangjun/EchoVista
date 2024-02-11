@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.yujiangjun.echovista.collection.statistics.survey.mapper.SurveyAnswerStatMapper">
+  <resultMap id="BaseResultMap" type="com.cn.yujiangjun.echovista.collection.statistics.survey.model.SurveyAnswerStat">
+    <!--@mbg.generated-->
+    <!--@Table survey_answer_stat-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="survey_id" jdbcType="VARCHAR" property="surveyId" />
+    <result column="ques_id" jdbcType="VARCHAR" property="quesId" />
+    <result column="answer_count" jdbcType="INTEGER" property="answerCount" />
+    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, survey_id, ques_id, answer_count, is_deleted, created_by, created_time, updated_by,
+    updated_time
+  </sql>
+
+  <select id="getAllQuesInAnswerSheet"
+            resultType="com.cn.yujiangjun.echovista.collection.statistics.survey.vo.AnswerSheetQuesStatRespVo">
+      select t1.survey_id,
+             t1.ques_id,
+             t2.ques_title,
+             t2.ques_order,
+             t2.ques_code,
+             t3.ques_name_en as quesCodeName,
+             t1.answer_count
+      from survey_answer_stat t1
+               left join survey_ques t2 on t1.survey_id = t2.survey_id and t1.ques_id = t2.ques_id
+               left join cat_question t3 on t2.ques_code = t3.ques_code
+      where t1.is_deleted = 0
+        and t2.is_deleted = 0
+        and t3.is_deleted = 0
+        and t1.survey_id = #{surveyId}
+      order by t2.ques_order
+    </select>
+</mapper>
